@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sarah's Beauty Store</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Add Playfair Display and Inter fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        .font-playfair {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .font-inter {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .header-circle {
+            width: 450px;
+            height: 450px;
+            background: #FFD1D1;
+            border-radius: 50%;
+            padding: 2px;
+            transition: all 0.3s ease;
+            box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.2);
+            border: 6px solid #FFB6B6;
+        }
+
+        .header-circle:hover {
+            transform: scale(1.02);
+            box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.25);
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: 16px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        .product-image-container {
+            border-radius: 12px 12px 0 0;
+            overflow: hidden;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover .product-image {
+            transform: scale(1.05);
+        }
+
+        .product-content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-footer {
+            margin-top: auto;
+        }
+
+        .whatsapp-btn {
+            background-color: #FF6F61;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .whatsapp-btn:hover {
+            background-color: #ff5c4d;
+        }
+
+        .shop-now-btn {
+            background-color: #FF6F61;
+            color: white;
+            padding: 0.75rem 2rem;
+            border-radius: 9999px;
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .subscribe-btn {
+            background-color: #FF6F61;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0 8px 8px 0;
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+            width: 120px; /* Added fixed width */
+        }
+
+        /* Email input form styles */
+.email-container {
+    width: 100%;
+    max-width: 100%;
+}
+
+.email-input {
+    background: #2A2A2A;
+    border: none;
+    padding: 0.75rem 1rem;
+    border-radius: 8px 0 0 8px;
+    color: white;
+    width: 185px;
+    font-family: 'Inter', sans-serif;
+    border: 1px solid white;  /* Added white border */
+    outline: none;  /* Removes the default blue outline */
+}
+
+.email-input:focus {
+    outline: none;  /* Removes the blue outline on focus */
+    border-color: white;  /* Keeps the white border on focus */
+}
+
+        .feature-bullet {
+            color: #FF6F61;
+        }
+
+        @media (max-width: 768px) {
+    .header-circle {
+        width: 400px;
+        height: 400px;
+        margin: 0 auto;
+    }
+
+    .header-circle img {
+        padding: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-circle {
+        width: 400px;
+        height: 400px;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .email-container {
+        display: flex;
+        width: 100%;
+        padding: 0 24px; /* Add padding to create margins */
+    }
+    
+    .email-container .flex {
+        width: 100%; /* Make the flex container take full width */
+    }
+    
+    .email-input {
+        flex: 2; /* Takes up more space than the button */
+    }
+
+    .subscribe-btn {
+        flex: 1; /* Takes up less space than the input */
+        white-space: nowrap;
+    }
+}
+    </style>
+</head>
+<body class="bg-[#FFF0F0] font-inter">
+    <!-- Hero Section -->
+    <section class="container mx-auto px-6 py-16">
+        <div class="flex flex-col md:flex-row items-center justify-between">
+            <div class="md:w-1/2 mb-10 md:mb-0">
+                <h1 class="text-5xl font-playfair font-bold text-[#1B2B4B] mb-4">Sarah's Beauty Store</h1>
+                <p class="text-xl mb-4">Luxury Beauty Products for You</p>
+                <p class="mb-8">Made with nature's best ingredients — our products' transparent ingredient lists allow you to know what's best for your skin.</p>
+                <button class="shop-now-btn">Shop Now</button>
+            </div>
+            <div class="md:w-1/2 flex justify-center">
+                <div class="header-circle flex items-center justify-center">
+                    <img src="./images/sarah header img.png" alt="Sarah Beauty" class="rounded-full w-full h-full object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Showcase -->
+    <section class="py-16">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-playfair font-bold text-center mb-12">Our Best Sellers</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Glow Hydrating Face Serum -->
+                <div class="product-card">
+                    <div class="product-image-container">
+                        <img src="./images/Glow Serum.png" alt="Glow Hydrating Face Serum" class="product-image">
+                    </div>
+                    <div class="p-6 product-content">
+                        <h3 class="text-xl font-playfair font-semibold mb-2">Glow Hydrating Face Serum</h3>
+                        <p class="text-gray-600 mb-4">A lightweight, fast-absorbing serum with hyaluronic acid and vitamin C</p>
+                        <ul class="mb-4 space-y-2">
+                            <li class="flex items-center text-gray-600">
+                                <span class="feature-bullet mr-2">•</span>All skin types
+                            </li>
+                            <li class="flex items-center text-gray-600">
+                                <span class="feature-bullet mr-2">•</span>With Hyaluronic Acid, Vitamin C, Aloe Vera
+                            </li>
+                        </ul>
+                        <div class="product-footer flex items-center justify-between">
+                            <span class="text-xl font-bold">$34.99</span>
+                            <a href="https://wa.me/96181749400?text=I'm%20interested%20in%20the%20Glow%20Hydrating%20Face%20Serum%20($34.99).%0A%0AKey%20Features:%0A-%20Lightweight%20and%20fast-absorbing%0A-%20Contains%20Hyaluronic%20Acid%20and%20Vitamin%20C%0A-%20Suitable%20for%20all%20skin%20types" 
+                               class="whatsapp-btn">
+                                <i class="fab fa-whatsapp"></i>
+                                Order on WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Velvet Rose Body Butter -->
+                <div class="product-card">
+                    <div class="product-image-container">
+                        <img src="./images/Velvet Rose Body Butter.png" alt="Velvet Rose Body Butter" class="product-image">
+                    </div>
+                    <div class="p-6 product-content">
+                        <h3 class="text-xl font-playfair font-semibold mb-2">Velvet Rose Body Butter</h3>
+                        <p class="text-gray-600 mb-4">Rich whipped body butter with shea butter and rose oil</p>
+                        <ul class="mb-4 space-y-2">
+                            <li class="flex items-center text-gray-600">
+                                <span class="feature-bullet mr-2">•</span>With Shea Butter, Cocoa Butter, Rose Oil
+                            </li>
+                            <li class="flex items-center text-gray-600">
+                                <span class="feature-bullet mr-2">•</span>Long-lasting hydration
+                            </li>
+                        </ul>
+                        <div class="product-footer flex items-center justify-between">
+                            <span class="text-xl font-bold">$28.50</span>
+                            <a href="https://wa.me/96181749400?text=I'm%20interested%20in%20the%20Velvet%20Rose%20Body%20Butter%20($28.50).%0A%0AKey%20Features:%0A-%20Rich%20whipped%20body%20butter%0A-%20Contains%20Shea%20Butter,%20Cocoa%20Butter,%20Rose%20Oil%0A-%20Long-lasting%20hydration" 
+                               class="whatsapp-btn">
+                                <i class="fab fa-whatsapp"></i>
+                                Order on WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Luxe Matte Liquid Lipstick -->
+                <div class="product-card">
+                    <div class="product-image-container">
+                        <img src="./images/Luxe Matte Liquid Lipstick.png" alt="Luxe Matte Liquid Lipstick" class="product-image">
+                    </div>
+                    <div class="p-6 product-content">
+                        <h3 class="text-xl font-playfair font-semibold mb-2">Luxe Matte Liquid Lipstick</h3>
+                        <p class="text-gray-600 mb-4">Nude Blush - 12-hour wear matte lipstick</p>
+                        <ul class="mb-4 space-y-2">
+                            <li class="flex items-center text-gray-600">
+                                <span class="feature-bullet mr-2">•</span>Vegan & Cruelty-Free
+                            </li>
+                            <li class="flex items-center text-gray-600">
+                                <span class="feature-bullet mr-2">•</span>Velvety smooth finish
+                            </li>
+                        </ul>
+                        <div class="product-footer flex items-center justify-between">
+                            <span class="text-xl font-bold">$19.99</span>
+                            <a href="https://wa.me/96181749400?text=I'm%20interested%20in%20the%20Luxe%20Matte%20Liquid%20Lipstick%20($19.99).%0A%0AKey%20Features:%0A-%20Vegan%20&%20Cruelty-Free%0A-%20Velvety%20smooth%20finish%0A-%2012-hour%20wear" 
+                               class="whatsapp-btn">
+                                <i class="fab fa-whatsapp"></i>
+                                Order on WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black text-white py-16">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <h3 class="text-xl font-playfair font-bold mb-4">Sarah's Beauty</h3>
+                    <p class="text-gray-400">Luxury beauty products for your daily skincare routine.</p>
+                </div>
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-lg font-playfair font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">About Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Products</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Contact</a></li>
+                    </ul>
+                </div>
+                <!-- Contact Us -->
+                <div>
+                    <h4 class="text-lg font-playfair font-semibold mb-4">Contact Us</h4>
+                    <ul class="space-y-2">
+                        <li><a href="https://wa.me/96181749400" class="text-gray-400 hover:text-white">WhatsApp</a></li>
+                        <li><a href="https://instagram.com/saidighaleb" class="text-gray-400 hover:text-white">Instagram</a></li>
+                    </ul>
+                </div>
+                <!-- Newsletter Section in Footer -->
+<div>
+    <h4 class="text-lg font-playfair font-semibold mb-4">Newsletter</h4>
+    <p class="text-gray-400 mb-4">Stay updated with our latest products and offers.</p>
+    <div class="email-container">
+        <div class="flex w-full">
+            <input type="email" placeholder="Your email" class="email-input">
+            <button class="subscribe-btn">Subscribe</button>
+        </div>
+    </div>
+</div>
+            <div class="border-t border-gray-800 pt-8 text-center">
+                <p class="text-gray-400">&copy; 2024 Sarah's Beauty Store. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
