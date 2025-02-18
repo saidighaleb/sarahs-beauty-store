@@ -3,10 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sarah's Beauty Store</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Sarah's Beauty Store - Luxury beauty products made with nature's best ingredients. Shop our collection of serums, body butters, and cosmetics.">
+    <meta name="keywords" content="beauty store, luxury cosmetics, natural skincare, organic beauty products, Sarah's Beauty">
+    <meta name="author" content="Sarah's Beauty">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph Meta Tags for Social Media -->
+    <meta property="og:title" content="Sarah's Beauty Store - Luxury Beauty Products">
+    <meta property="og:description" content="Discover luxury beauty products made with nature's best ingredients. Shop our collection of serums, body butters, and cosmetics.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://saidighaleb.github.io/sarahs-beauty-store/">
+    <meta property="og:image" content="https://saidighaleb.github.io/sarahs-beauty-store/images/sarah-header-img.webp">
+    
+    <title>Sarah's Beauty Store | Luxury Beauty Products</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Add Playfair Display and Inter fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Favicon Configuration -->
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+    
     <style>
         .font-playfair {
             font-family: 'Playfair Display', serif;
@@ -135,6 +156,64 @@
             color: #FF6F61;
         }
 
+          /* New Navigation Styles */
+          .nav-link {
+            position: relative;
+            padding-bottom: 2px;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #FF6F61;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link.active::after {
+            width: 100%;
+        }
+        
+        .nav-link.active {
+            color: #FF6F61;
+        }
+
+        .mobile-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: white;
+    padding: 1rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    transform: translateY(-100%);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.mobile-menu.active {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+}
+
+.mobile-menu a {
+    display: block;
+    padding: 0.75rem 1rem;
+    text-align: center;
+    color: #1B2B4B;
+    transition: all 0.3s ease;
+}
+
+.mobile-menu a:hover {
+    background-color: #FFF0F0;
+    color: #FF6F61;
+}
+
         @media (max-width: 768px) {
     .header-circle {
         width: 400px;
@@ -178,32 +257,63 @@
     </style>
 </head>
 <body class="bg-[#FFF0F0] font-inter">
-    <!-- Hero Section -->
-    <section class="container mx-auto px-6 py-16">
-        <div class="flex flex-col md:flex-row items-center justify-between">
-            <div class="md:w-1/2 mb-10 md:mb-0">
-                <h1 class="text-5xl font-playfair font-bold text-[#1B2B4B] mb-4">Sarah's Beauty Store</h1>
-                <p class="text-xl mb-4">Luxury Beauty Products for You</p>
-                <p class="mb-8">Made with nature's best ingredients — our products' transparent ingredient lists allow you to know what's best for your skin.</p>
-                <button class="shop-now-btn">Shop Now</button>
+
+    <!-- index.html navigation updates -->
+    <nav class="bg-white shadow-md fixed w-full z-50">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <a href="index.html" class="font-playfair font-bold text-xl text-[#1B2B4B]">
+                    Sarah's Beauty
+                </a>
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="#bestSellers" class="nav-link">Products</a>
+                    <a href="about.html" class="nav-link">About</a>
+                    <a href="contact.html" class="nav-link">Contact</a>
+                </div>
+                <button class="md:hidden focus:outline-none" id="mobile-menu-button">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
             </div>
+            <!-- Mobile Menu -->
+            <div class="mobile-menu md:hidden" id="mobile-menu">
+                <a href="index.html">Home</a>
+                <a href="#bestSellers">Products</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="container mx-auto px-6 pt-32 pb-16">
+        <div class="flex flex-col md:flex-row items-center justify-between">
+            <!-- Update hero section shop now button -->
+<div class="md:w-1/2 mb-10 md:mb-0">
+    <h1 class="text-5xl font-playfair font-bold text-[#1B2B4B] mb-4">Sarah's Beauty Store</h1>
+    <p class="text-xl mb-4">Luxury Beauty Products for You</p>
+    <p class="mb-8">Made with nature's best ingredients — our products' transparent ingredient lists allow you to know what's best for your skin.</p>
+    <a href="#bestSellers" class="shop-now-btn">Shop Now</a>
+</div>
             <div class="md:w-1/2 flex justify-center">
                 <div class="header-circle flex items-center justify-center">
-                    <img src="./images/sarah header img.png" alt="Sarah Beauty" class="rounded-full w-full h-full object-cover">
+                    <img src="./images/sarah header img.webp" alt="Sarah Beauty" class="rounded-full w-full h-full object-cover">
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Product Showcase -->
-    <section class="py-16">
+    <section id="bestSellers" class="py-16">
         <div class="container mx-auto px-6">
             <h2 class="text-4xl font-playfair font-bold text-center mb-12">Our Best Sellers</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- Glow Hydrating Face Serum -->
                 <div class="product-card">
                     <div class="product-image-container">
-                        <img src="./images/Glow Serum.png" alt="Glow Hydrating Face Serum" class="product-image">
+                        <img src="./images/Glow Serum.webp" alt="Glow Hydrating Face Serum" class="product-image">
                     </div>
                     <div class="p-6 product-content">
                         <h3 class="text-xl font-playfair font-semibold mb-2">Glow Hydrating Face Serum</h3>
@@ -230,7 +340,7 @@
                 <!-- Velvet Rose Body Butter -->
                 <div class="product-card">
                     <div class="product-image-container">
-                        <img src="./images/Velvet Rose Body Butter.png" alt="Velvet Rose Body Butter" class="product-image">
+                        <img src="./images/Velvet Rose Body Butter.webp" alt="Velvet Rose Body Butter" class="product-image">
                     </div>
                     <div class="p-6 product-content">
                         <h3 class="text-xl font-playfair font-semibold mb-2">Velvet Rose Body Butter</h3>
@@ -257,7 +367,7 @@
                 <!-- Luxe Matte Liquid Lipstick -->
                 <div class="product-card">
                     <div class="product-image-container">
-                        <img src="./images/Luxe Matte Liquid Lipstick.png" alt="Luxe Matte Liquid Lipstick" class="product-image">
+                        <img src="./images/Luxe Matte Liquid Lipstick.webp" alt="Luxe Matte Liquid Lipstick" class="product-image">
                     </div>
                     <div class="p-6 product-content">
                         <h3 class="text-xl font-playfair font-semibold mb-2">Luxe Matte Liquid Lipstick</h3>
@@ -284,46 +394,55 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-black text-white py-16">
-        <div class="container mx-auto px-6">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-                <div>
-                    <h3 class="text-xl font-playfair font-bold mb-4">Sarah's Beauty</h3>
-                    <p class="text-gray-400">Luxury beauty products for your daily skincare routine.</p>
+   <!-- Updated footer with centered headings and working links -->
+<footer class="bg-black text-white py-16">
+    <div class="container mx-auto px-6">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+            <!-- Brand Section -->
+            <div class="text-center">
+                <h3 class="text-2xl font-playfair font-bold mb-4">Sarah's Beauty</h3>
+                <p class="text-gray-400 mb-6">Elevate your beauty routine with our luxury products.</p>
+                <div class="flex space-x-4 justify-center">
+                    <a href="https://instagram.com/saidighaleb" class="text-gray-400 hover:text-[#FF6F61] transition-colors">
+                        <i class="fab fa-instagram text-2xl"></i>
+                    </a>
+                    <a href="https://wa.me/96181749400" class="text-gray-400 hover:text-[#FF6F61] transition-colors">
+                        <i class="fab fa-whatsapp text-2xl"></i>
+                    </a>
                 </div>
-                <!-- Quick Links -->
-                <div>
-                    <h4 class="text-lg font-playfair font-semibold mb-4">Quick Links</h4>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-400 hover:text-white">About Us</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white">Products</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white">Contact</a></li>
-                    </ul>
+            </div>
+            
+            <!-- Quick Links -->
+            <div class="text-center">
+                <h4 class="text-lg font-playfair font-semibold mb-4">Quick Links</h4>
+                <ul class="space-y-3">
+                    <li><a href="index.html" class="text-gray-400 hover:text-white transition-colors">Home</a></li>
+                    <li><a href="#bestSellers" class="text-gray-400 hover:text-white transition-colors">Products</a></li>
+                    <li><a href="about.html" class="text-gray-400 hover:text-white transition-colors">About</a></li>
+                    <li><a href="contact.html" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
+                </ul>
+            </div>
+            
+            <!-- Newsletter -->
+            <div class="text-center">
+                <h4 class="text-lg font-playfair font-semibold mb-4">Stay Connected</h4>
+                <p class="text-gray-400 mb-4">Subscribe to receive updates and special offers.</p>
+                <div class="flex justify-center">
+                    <input type="email" placeholder="Your email" class="px-4 py-2 bg-gray-900 border border-gray-700 rounded-l-lg focus:outline-none focus:border-[#FF6F61] text-white">
+                    <button class="px-6 py-2 bg-[#FF6F61] text-white rounded-r-lg hover:bg-[#ff5c4d] transition-colors">
+                        Subscribe
+                    </button>
                 </div>
-                <!-- Contact Us -->
-                <div>
-                    <h4 class="text-lg font-playfair font-semibold mb-4">Contact Us</h4>
-                    <ul class="space-y-2">
-                        <li><a href="https://wa.me/96181749400" class="text-gray-400 hover:text-white">WhatsApp</a></li>
-                        <li><a href="https://instagram.com/saidighaleb" class="text-gray-400 hover:text-white">Instagram</a></li>
-                    </ul>
-                </div>
-                <!-- Newsletter Section in Footer -->
-<div>
-    <h4 class="text-lg font-playfair font-semibold mb-4">Newsletter</h4>
-    <p class="text-gray-400 mb-4">Stay updated with our latest products and offers.</p>
-    <div class="email-container">
-        <div class="flex w-full">
-            <input type="email" placeholder="Your email" class="email-input">
-            <button class="subscribe-btn">Subscribe</button>
-        </div>
-    </div>
-</div>
-            <div class="border-t border-gray-800 pt-8 text-center">
-                <p class="text-gray-400">&copy; 2024 Sarah's Beauty Store. All rights reserved.</p>
             </div>
         </div>
-    </footer>
+        
+        <div class="mt-12 pt-8 border-t border-gray-800 text-center text-gray-400">
+            <p>&copy; 2024 Sarah's Beauty Store. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<script src="main.js"></script>
+
 </body>
 </html>
