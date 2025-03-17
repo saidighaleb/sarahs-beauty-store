@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
@@ -9,6 +10,33 @@
     <meta name="keywords" content="beauty store, luxury cosmetics, natural skincare, organic beauty products, Sarah's Beauty">
     <meta name="author" content="Sarah's Beauty">
     <meta name="robots" content="index, follow">
+    
+    <!-- Schema.org markup for Google -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org/",
+      "@type": "Product",
+      "name": "Glow Hydrating Face Serum",
+      "image": "./images/Glow Serum.webp",
+      "description": "A lightweight, fast-absorbing serum with hyaluronic acid and vitamin C",
+      "brand": {
+        "@type": "Brand",
+        "name": "Sarah's Beauty"
+      },
+      "offers": {
+        "@type": "Offer",
+        "url": "https://yourdomain.com/product/glow-serum",
+        "priceCurrency": "USD",
+        "price": "34.99",
+        "availability": "https://schema.org/InStock"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "reviewCount": "124"
+      }
+    }
+    </script>
     
     <!-- Open Graph Meta Tags for Social Media -->
     <meta property="og:title" content="Sarah's Beauty Store - Luxury Beauty Products">
@@ -20,7 +48,8 @@
     <title>Sarah's Beauty Store | Luxury Beauty Products</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
     <!-- Favicon Configuration -->
 <link rel="icon" href="favicon.ico" type="image/x-icon">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
@@ -60,6 +89,8 @@
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
             display: flex;
             flex-direction: column;
+            opacity: 1;
+            transform: scale(1);
         }
         
         .product-card:hover {
@@ -96,7 +127,7 @@
         .whatsapp-btn {
             background-color: #FF6F61;
             color: white;
-            padding: 0.75rem 1.5rem;
+            padding: 0.5rem 1rem;
             border-radius: 9999px;
             transition: all 0.3s ease;
             display: flex;
@@ -104,10 +135,17 @@
             justify-content: center;
             gap: 0.5rem;
             font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            min-width: 140px;
         }
 
         .whatsapp-btn:hover {
             background-color: #ff5c4d;
+            transform: translateY(-1px);
+        }
+
+        .whatsapp-btn i {
+            font-size: 1rem;
         }
 
         .shop-now-btn {
@@ -253,10 +291,331 @@
         flex: 1; /* Takes up less space than the input */
         white-space: nowrap;
     }
+
+    .category-btn {
+        padding: 0.5rem 1.5rem;
+        border-radius: 9999px;
+        border: 2px solid #FF6F61;
+        background-color: transparent;
+        color: #FF6F61;
+        font-weight: 500;
+        transition: all 0.3s ease;
+    }
+    
+    .category-btn:hover, .category-btn.active {
+        background-color: #FF6F61;
+        color: white;
+    }
+    
+    .product-card {
+        transition: all 0.3s ease;
+    }
+    
+    .hidden-product {
+        display: none;
+    }
+
+
 }
+
+.category-btn {
+    padding: 0.5rem 1.5rem;
+    border-radius: 9999px;
+    border: 2px solid #FF6F61;
+    background-color: transparent;
+    color: #FF6F61;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.category-btn:hover, 
+.category-btn.active {
+    background-color: #FF6F61;
+    color: white;
+}
+
+.fade-section {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-section.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.blur-load {
+    background-size: cover;
+    background-position: center;
+    filter: blur(20px);
+}
+
+.blur-load.loaded {
+    filter: blur(0);
+    transition: filter 0.3s ease;
+}
+
+/* Add these styles to your CSS section */
+@media (max-width: 768px) {
+  .shop-now-btn {
+    display: block;
+    width: fit-content;
+    margin: 0 auto;
+    padding: 0.75rem 3rem; /* Larger touch target */
+    font-size: 1.1rem; /* Larger text */
+  }
+  
+  /* Ensure text wrapping properly on smaller screens */
+  .md\:w-1\/2 h1 {
+    font-size: 2.5rem;
+    line-height: 1.2;
+  }
+  
+  /* Adjust hero section padding */
+  #home {
+    padding-top: 6rem;
+    padding-bottom: 2rem;
+  }
+}
+
+/* Extra small devices */
+@media (max-width: 480px) {
+  .shop-now-btn {
+    width: 100%; /* Full width on very small screens */
+    text-align: center;
+  }
+  
+  .header-circle {
+    width: 280px; /* Smaller on very small screens */
+    height: 280px;
+  }
+  
+  /* Further reduce font size on very small screens */
+  .md\:w-1\/2 h1 {
+    font-size: 2rem;
+  }
+}
+
+/* Add this to your CSS styles */
+@media (max-width: 640px) {
+  #home {
+    padding-top: 8rem !important;
+  }
+  
+  #home h1 {
+    font-size: 2.25rem !important;
+    text-align: center;
+  }
+  
+  #home p {
+    text-align: center;
+  }
+  
+  .shop-now-btn {
+    margin: 0 auto;
+    display: block;
+    padding: 0.75rem 3rem;
+    font-weight: 600;
+  }
+  
+  .header-circle {
+    margin-top: 2rem;
+    width: 280px;
+    height: 280px;
+  }
+}
+
+/* Add these media queries for better button sizing on tablets */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .whatsapp-btn {
+    /* Reduce the button size for tablet/iPad */
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    gap: 0.25rem;
+  }
+  
+  .product-footer {
+    /* Add more space between price and button */
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  /* Make price text smaller on tablets */
+  .product-footer span.text-xl {
+    font-size: 1.1rem;
+  }
+  
+  /* Adjust layout for product cards on tablets */
+  .product-card {
+    padding-bottom: 0.5rem;
+  }
+  
+  /* Reduce padding in product content */
+  .product-content {
+    padding: 1rem !important;
+  }
+}
+
+/* Additional adjustments for smaller tablets */
+@media (min-width: 768px) and (max-width: 900px) {
+  .whatsapp-btn {
+    /* Make button full width on smaller tablets */
+    width: 100%;
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+  }
+  
+  .product-footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* Comprehensive button and layout fixes for all screen sizes */
+
+/* Base product card styling improvements */
+.product-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.product-content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+/* Style the product footer to ensure consistent layout */
+.product-footer {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+/* Base WhatsApp button styling */
+.whatsapp-btn {
+  padding: 0.75rem 1.5rem;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+/* Extra large screens */
+@media (min-width: 1280px) {
+  .whatsapp-btn {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+  }
+}
+
+/* Large screens */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .whatsapp-btn {
+    padding: 0.65rem 1.25rem;
+    font-size: 0.95rem;
+  }
+}
+
+/* Medium screens/tablets */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .whatsapp-btn {
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+    gap: 0.25rem;
+  }
+  
+  .product-footer {
+    flex-wrap: wrap;
+  }
+}
+
+/* Smaller tablets */
+@media (min-width: 640px) and (max-width: 767px) {
+  .product-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+  
+  .whatsapp-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* Mobile phones */
+@media (max-width: 639px) {
+  .product-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+  
+  .whatsapp-btn {
+    width: 100%;
+    justify-content: center;
+    margin-top: 0.5rem;
+    padding: 0.75rem 1rem;
+  }
+}
+
+/* Fix for specific iPad width issues (typically around 768px-834px) */
+@media (min-width: 760px) and (max-width: 850px) {
+  .whatsapp-btn {
+    width: 100%;
+    margin-top: 0.5rem;
+    text-align: center;
+    padding: 0.6rem 0.5rem;
+    font-size: 0.85rem;
+  }
+  
+  .product-footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* Ensure consistent padding in product cards */
+.product-content {
+  padding: 1.5rem !important;
+}
+
+@media (max-width: 1023px) {
+  .product-content {
+    padding: 1.25rem !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .product-content {
+    padding: 1rem !important;
+  }
+}
+
+
     </style>
+    
 </head>
 <body class="bg-[#FFF0F0] font-inter">
+    <!-- Page Loader -->
+    <div id="page-loader" class="fixed inset-0 bg-white z-[9999] flex items-center justify-center transition-opacity duration-500">
+        <div class="animate-pulse text-[#FF6F61]">
+            <svg class="w-20 h-20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+            </svg>
+        </div>
+    </div>
 
     <!-- index.html navigation updates -->
     <nav class="bg-white shadow-md fixed w-full z-50">
@@ -305,15 +664,40 @@
         </div>
     </section>
 
+    <!-- Product Category Filter -->
+<section class="py-8 bg-white">
+    <div class="container mx-auto px-6">
+        <div class="grid grid-cols-2 md:flex md:flex-wrap justify-center gap-2 md:gap-4">
+            <button class="category-btn active w-full text-sm md:text-base md:w-auto" data-category="all">
+                All Products
+            </button>
+            <button class="category-btn w-full text-sm md:text-base md:w-auto" data-category="skincare">
+                Skincare
+            </button>
+            <button class="category-btn w-full text-sm md:text-base md:w-auto" data-category="body">
+                Body Care
+            </button>
+            <button class="category-btn w-full text-sm md:text-base md:w-auto" data-category="makeup">
+                Makeup
+            </button>
+        </div>
+    </div>
+</section>
+
+
+
+
+
     <!-- Product Showcase -->
     <section id="bestSellers" class="py-16">
         <div class="container mx-auto px-6">
             <h2 class="text-4xl font-playfair font-bold text-center mb-12">Our Best Sellers</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- Glow Hydrating Face Serum -->
-                <div class="product-card">
-                    <div class="product-image-container">
-                        <img src="./images/Glow Serum.webp" alt="Glow Hydrating Face Serum" class="product-image">
+                <div class="product-card" data-category="skincare">
+                    <div class="product-image-container relative">
+                        <div class="blur-load absolute inset-0" style="background-image: url(tiny-image-placeholder.webp)"></div>
+                        <img src="./images/Glow Serum.webp" alt="Glow Hydrating Face Serum" class="product-image relative z-10" loading="lazy" width="400" height="400" onload="this.previousElementSibling.classList.add('loaded')">
                     </div>
                     <div class="p-6 product-content">
                         <h3 class="text-xl font-playfair font-semibold mb-2">Glow Hydrating Face Serum</h3>
@@ -328,19 +712,20 @@
                         </ul>
                         <div class="product-footer flex items-center justify-between">
                             <span class="text-xl font-bold">$34.99</span>
-                            <a href="https://wa.me/96181749400?text=I'm%20interested%20in%20the%20Glow%20Hydrating%20Face%20Serum%20($34.99).%0A%0AKey%20Features:%0A-%20Lightweight%20and%20fast-absorbing%0A-%20Contains%20Hyaluronic%20Acid%20and%20Vitamin%20C%0A-%20Suitable%20for%20all%20skin%20types" 
-                               class="whatsapp-btn">
+                            <button class="whatsapp-btn" onclick="showDemoMessage()">
                                 <i class="fab fa-whatsapp"></i>
                                 Order on WhatsApp
-                            </a>
+                            </button>
                         </div>
                     </div>
                 </div>
 
+
                 <!-- Velvet Rose Body Butter -->
-                <div class="product-card">
-                    <div class="product-image-container">
-                        <img src="./images/Velvet Rose Body Butter.webp" alt="Velvet Rose Body Butter" class="product-image">
+                <div class="product-card" data-category="body">
+                    <div class="product-image-container relative">
+                        <div class="blur-load absolute inset-0" style="background-image: url(tiny-image-placeholder.webp)"></div>
+                        <img src="./images/Velvet Rose Body Butter.webp" alt="Velvet Rose Body Butter" class="product-image relative z-10" loading="lazy" width="400" height="400" onload="this.previousElementSibling.classList.add('loaded')">
                     </div>
                     <div class="p-6 product-content">
                         <h3 class="text-xl font-playfair font-semibold mb-2">Velvet Rose Body Butter</h3>
@@ -355,19 +740,19 @@
                         </ul>
                         <div class="product-footer flex items-center justify-between">
                             <span class="text-xl font-bold">$28.50</span>
-                            <a href="https://wa.me/96181749400?text=I'm%20interested%20in%20the%20Velvet%20Rose%20Body%20Butter%20($28.50).%0A%0AKey%20Features:%0A-%20Rich%20whipped%20body%20butter%0A-%20Contains%20Shea%20Butter,%20Cocoa%20Butter,%20Rose%20Oil%0A-%20Long-lasting%20hydration" 
-                               class="whatsapp-btn">
+                            <button class="whatsapp-btn" onclick="showDemoMessage()">
                                 <i class="fab fa-whatsapp"></i>
                                 Order on WhatsApp
-                            </a>
+                            </button>
                         </div>
                     </div>
                 </div>
 
                 <!-- Luxe Matte Liquid Lipstick -->
-                <div class="product-card">
-                    <div class="product-image-container">
-                        <img src="./images/Luxe Matte Liquid Lipstick.webp" alt="Luxe Matte Liquid Lipstick" class="product-image">
+                <div class="product-card" data-category="makeup">
+                    <div class="product-image-container relative">
+                        <div class="blur-load absolute inset-0" style="background-image: url(tiny-image-placeholder.webp)"></div>
+                        <img src="./images/Luxe Matte Liquid Lipstick.webp" alt="Luxe Matte Liquid Lipstick" class="product-image relative z-10" loading="lazy" width="400" height="400" onload="this.previousElementSibling.classList.add('loaded')">
                     </div>
                     <div class="p-6 product-content">
                         <h3 class="text-xl font-playfair font-semibold mb-2">Luxe Matte Liquid Lipstick</h3>
@@ -382,17 +767,364 @@
                         </ul>
                         <div class="product-footer flex items-center justify-between">
                             <span class="text-xl font-bold">$19.99</span>
-                            <a href="https://wa.me/96181749400?text=I'm%20interested%20in%20the%20Luxe%20Matte%20Liquid%20Lipstick%20($19.99).%0A%0AKey%20Features:%0A-%20Vegan%20&%20Cruelty-Free%0A-%20Velvety%20smooth%20finish%0A-%2012-hour%20wear" 
-                               class="whatsapp-btn">
+                            <button class="whatsapp-btn" onclick="showDemoMessage()">
                                 <i class="fab fa-whatsapp"></i>
                                 Order on WhatsApp
-                            </a>
+                            </button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- Before/After Section -->
+<section class="py-16 bg-white">
+    <div class="container mx-auto px-6">
+        <h2 class="text-4xl font-playfair font-bold text-center mb-4">Real Results</h2>
+        <p class="text-center text-gray-600 mb-12">See the transformation our products can bring</p>
+        
+        <div class="max-w-2xl mx-auto">
+            <div class="space-y-6">
+                <div class="flex justify-center gap-4">
+                    <button class="before-btn bg-black text-white px-8 py-3 rounded-full hover:bg-gray-800 transition-colors font-medium">
+                        Before
+                    </button>
+                    <button class="after-btn bg-[#FF6F61] text-white px-8 py-3 rounded-full hover:bg-[#ff5c4d] transition-colors font-medium">
+                        After
+                    </button>
+                </div>
+
+                <div class="before-after-container relative rounded-2xl overflow-hidden shadow-xl">
+                    <div class="images-container relative aspect-[4/3]">
+                        <img src="./images/before-skin.webp" alt="Before using our products" class="before-image w-full h-full object-cover" loading="lazy">
+                        <img src="./images/after-skin.webp" alt="After using our products" class="after-image w-full h-full object-cover absolute top-0 left-0 opacity-0 transition-opacity duration-300" loading="lazy">
+                    </div>
+                </div>
+            </div>
+            
+            <p class="text-center mt-6 text-gray-600">*Results after 4 weeks of using our Glow Hydrating Face Serum</p>
+        </div>
+    </div>
+</section>
+
+<!-- Product Reviews Section -->
+<section class="py-16 bg-white">
+    <div class="container mx-auto px-6">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-playfair font-bold mb-4">Customer Reviews</h2>
+                <p class="text-gray-600">See what our customers are saying about our products</p>
+            </div>
+            
+            <!-- Star Rating Overview -->
+            <div class="bg-[#FFF8F8] p-8 rounded-2xl mb-12 text-center">
+                <div class="flex items-center justify-center gap-4 mb-4">
+                    <div class="flex text-yellow-400 text-3xl">
+                        ★★★★★
+                    </div>
+                    <div>
+                        <span class="text-2xl font-bold">4.8</span>
+                        <span class="text-gray-600 ml-2">out of 5</span>
+                    </div>
+                </div>
+                <p class="text-gray-600">Based on 124 reviews</p>
+            </div>
+            
+            <!-- Reviews List -->
+            <div class="grid gap-6 mb-12">
+                <!-- Review 1 -->
+                <div class="bg-[#FFF8F8] p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <h4 class="font-playfair font-semibold text-lg mb-2">Sarah M.</h4>
+                            <div class="flex text-yellow-400 mb-2">
+                                ★★★★★
+                            </div>
+                            <div class="text-gray-500 text-sm">2 weeks ago</div>
+                        </div>
+                        <div class="bg-white p-2 rounded-full">
+                            <img src="./images/verified-badge.svg" alt="Verified Purchase" class="w-6 h-6" loading="lazy">
+                        </div>
+                    </div>
+                    <p class="text-gray-700 leading-relaxed">"This serum is amazing! I've been using it for just 3 weeks and already see a huge difference in my skin's hydration and glow. The formula absorbs quickly and doesn't feel sticky at all."</p>
+                </div>
+                
+                <!-- Additional reviews with same structure... -->
+            </div>
+            
+            <!-- Write a Review Button -->
+            <div class="text-center">
+                <button id="writeReviewBtn" class="bg-[#FF6F61] text-white px-8 py-4 rounded-full hover:bg-[#ff5c4d] transition-colors font-medium text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-200">
+                    Write a Review
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Review Form Modal -->
+<div id="reviewModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden opacity-0 transition-opacity duration-300">
+    <div class="bg-white rounded-2xl p-8 max-w-lg w-full mx-4 transform scale-95 transition-transform duration-300">
+        <div class="flex justify-between items-center mb-6">
+            <h3 class="text-2xl font-playfair font-bold">Write a Review</h3>
+            <button id="closeReviewModal" class="text-gray-500 hover:text-gray-700 transition-colors">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+        
+        <form id="reviewForm" class="space-y-6">
+            <div>
+                <label class="block text-gray-700 font-medium mb-2">Your Rating</label>
+                <div class="flex text-3xl text-gray-300 star-rating gap-2">
+                    <span class="cursor-pointer hover:scale-110 transition-transform" data-rating="1">★</span>
+                    <span class="cursor-pointer hover:scale-110 transition-transform" data-rating="2">★</span>
+                    <span class="cursor-pointer hover:scale-110 transition-transform" data-rating="3">★</span>
+                    <span class="cursor-pointer hover:scale-110 transition-transform" data-rating="4">★</span>
+                    <span class="cursor-pointer hover:scale-110 transition-transform" data-rating="5">★</span>
+                </div>
+            </div>
+            
+            <div>
+                <label class="block text-gray-700 font-medium mb-2">Your Name</label>
+                <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#FF6F61] focus:ring-2 focus:ring-[#FF6F61] focus:ring-opacity-50 transition-all" required>
+            </div>
+            
+            <div>
+                <label class="block text-gray-700 font-medium mb-2">Your Review</label>
+                <textarea rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#FF6F61] focus:ring-2 focus:ring-[#FF6F61] focus:ring-opacity-50 transition-all" required></textarea>
+            </div>
+            
+            <button type="submit" class="w-full bg-[#FF6F61] text-white py-4 rounded-lg hover:bg-[#ff5c4d] transition-all duration-200 font-medium text-lg shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
+                Submit Review
+            </button>
+        </form>
+    </div>
+</div>
+
+<!-- Skincare Quiz Banner -->
+<section class="py-12 bg-[#FFD1D1] mt-16">
+    <div class="container mx-auto px-6">
+        <div class="bg-white rounded-2xl shadow-xl p-8 max-w-4xl mx-auto">
+            <div class="text-center mb-6">
+                <h2 class="text-3xl font-playfair font-bold mb-2">Find Your Perfect Products</h2>
+                <p class="text-gray-600">Take our skincare quiz and discover the ideal routine for your unique skin.</p>
+            </div>
+            
+            <button id="startQuizBtn" class="mx-auto block bg-[#FF6F61] text-white px-8 py-3 rounded-full hover:bg-[#ff5c4d] transition-colors">
+                Start Quiz
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- Quiz Modal -->
+<div id="quizModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center">
+    <div class="bg-white rounded-2xl p-8 max-w-lg w-full mx-4 quiz-container">
+        <!-- Progress Bar -->
+        <div class="mb-6">
+            <div class="h-2 bg-gray-200 rounded-full">
+                <div class="quiz-progress h-2 bg-[#FF6F61] rounded-full" style="width: 0%"></div>
+            </div>
+        </div>
+        
+        <!-- Quiz Content -->
+        <div class="quiz-content">
+            <!-- Question 1 -->
+            <div class="quiz-step active" data-step="1">
+                <h3 class="text-2xl font-playfair font-semibold mb-4">What's your skin type?</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="quiz-option border-2 border-gray-200 rounded-xl p-4 hover:border-[#FF6F61] cursor-pointer transition-colors" data-value="dry">
+                        <h4 class="font-semibold mb-2">Dry</h4>
+                        <p class="text-gray-600">Feels tight, flaky, or rough</p>
+                    </div>
+                    <div class="quiz-option border-2 border-gray-200 rounded-xl p-4 hover:border-[#FF6F61] cursor-pointer transition-colors" data-value="oily">
+                        <h4 class="font-semibold mb-2">Oily</h4>
+                        <p class="text-gray-600">Shiny, particularly on T-zone</p>
+                    </div>
+                    <div class="quiz-option border-2 border-gray-200 rounded-xl p-4 hover:border-[#FF6F61] cursor-pointer transition-colors" data-value="combination">
+                        <h4 class="font-semibold mb-2">Combination</h4>
+                        <p class="text-gray-600">Oily in some areas, dry in others</p>
+                    </div>
+                    <div class="quiz-option border-2 border-gray-200 rounded-xl p-4 hover:border-[#FF6F61] cursor-pointer transition-colors" data-value="normal">
+                        <h4 class="font-semibold mb-2">Normal</h4>
+                        <p class="text-gray-600">Balanced, neither dry nor oily</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Question 2 -->
+            <div class="quiz-step hidden" data-step="2">
+                <h3 class="text-2xl font-playfair font-semibold mb-4">What are your main skin concerns?</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="quiz-option border-2 border-gray-200 rounded-xl p-4 hover:border-[#FF6F61] cursor-pointer transition-colors" data-value="aging">
+                        <h4 class="font-semibold mb-2">Fine Lines & Wrinkles</h4>
+                        <p class="text-gray-600">Signs of aging</p>
+                    </div>
+                    <div class="quiz-option border-2 border-gray-200 rounded-xl p-4 hover:border-[#FF6F61] cursor-pointer transition-colors" data-value="acne">
+                        <h4 class="font-semibold mb-2">Acne & Breakouts</h4>
+                        <p class="text-gray-600">Blemishes and spots</p>
+                    </div>
+                    <div class="quiz-option border-2 border-gray-200 rounded-xl p-4 hover:border-[#FF6F61] cursor-pointer transition-colors" data-value="hyperpigmentation">
+                        <h4 class="font-semibold mb-2">Dark Spots</h4>
+                        <p class="text-gray-600">Uneven skin tone</p>
+                    </div>
+                    <div class="quiz-option border-2 border-gray-200 rounded-xl p-4 hover:border-[#FF6F61] cursor-pointer transition-colors" data-value="sensitive">
+                        <h4 class="font-semibold mb-2">Sensitivity</h4>
+                        <p class="text-gray-600">Redness or irritation</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Question 3 -->
+            <div class="quiz-step hidden" data-step="3">
+                <h3 class="text-2xl font-playfair font-semibold mb-4">How would you describe your current skincare routine?</h3>
+                <div class="space-y-4">
+                    <div class="quiz-option border-2 border-gray-200 rounded-xl p-4 hover:border-[#FF6F61] cursor-pointer transition-colors" data-value="minimal">
+                        <h4 class="font-semibold mb-2">Minimal</h4>
+                        <p class="text-gray-600">Just the basics (cleanse, maybe moisturize)</p>
+                    </div>
+                    <div class="quiz-option border-2 border-gray-200 rounded-xl p-4 hover:border-[#FF6F61] cursor-pointer transition-colors" data-value="standard">
+                        <h4 class="font-semibold mb-2">Standard</h4>
+                        <p class="text-gray-600">Cleanse, tone, moisturize regularly</p>
+                    </div>
+                    <div class="quiz-option border-2 border-gray-200 rounded-xl p-4 hover:border-[#FF6F61] cursor-pointer transition-colors" data-value="advanced">
+                        <h4 class="font-semibold mb-2">Advanced</h4>
+                        <p class="text-gray-600">Multiple steps with serums and treatments</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Results -->
+            <div class="quiz-step hidden" data-step="result">
+                <h3 class="text-2xl font-playfair font-bold mb-4 text-center">Your Personalized Recommendations</h3>
+                
+                <div class="bg-[#FFF0F0] p-6 rounded-xl mb-6">
+                    <h4 class="font-semibold mb-2">Your Skin Profile:</h4>
+                    <ul class="list-disc pl-5 text-gray-600 mb-4" id="skinProfile">
+                        <!-- Filled dynamically by JS -->
+                    </ul>
+                </div>
+                
+                <div class="mb-6">
+                    <h4 class="font-semibold mb-4">Recommended Products:</h4>
+                    <div class="grid grid-cols-1 gap-4" id="recommendedProducts">
+                        <!-- Filled dynamically by JS -->
+                    </div>
+                </div>
+                
+                <div class="text-center">
+                    <a href="#bestSellers" id="shopRecommendations" class="inline-block bg-[#FF6F61] text-white px-6 py-2 rounded-full hover:bg-[#ff5c4d] transition-colors">
+                        Shop Recommendations
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Quiz Navigation -->
+        <div class="flex justify-between mt-8">
+            <button class="quiz-prev-btn bg-gray-200 text-gray-700 px-6 py-2 rounded-full hover:bg-gray-300 transition-colors hidden">
+                Back
+            </button>
+            <button class="quiz-next-btn ml-auto bg-[#FF6F61] text-white px-6 py-2 rounded-full hover:bg-[#ff5c4d] transition-colors">
+                Next
+            </button>
+            <button id="closeQuizBtn" class="quiz-close-btn bg-gray-200 text-gray-700 px-4 py-2 rounded-full hover:bg-gray-300 transition-colors">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Instagram Feed Section -->
+<section class="py-16 bg-white">
+    <div class="container mx-auto px-6">
+        <div class="text-center mb-12">
+            <h2 class="text-4xl font-playfair font-bold mb-4">Follow Our Journey</h2>
+            <p class="text-gray-600">Join our beautiful community on Instagram <a href="#" class="text-[#FF6F61] hover:underline">@sarahs_beauty</a></p>
+        </div>
+        
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <!-- Instagram Images -->
+            <div class="instagram-item overflow-hidden rounded-xl shadow-md relative group">
+                <img src="./images/Glow Serum.webp" alt="Instagram Feed" class="w-full aspect-square object-cover transition-transform duration-300 group-hover:scale-110" loading="lazy">
+                <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
+                    <div class="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex space-x-4">
+                        <span class="flex items-center">
+                            <i class="far fa-heart mr-1"></i>
+                            <span>124</span>
+                        </span>
+                        <span class="flex items-center">
+                            <i class="far fa-comment mr-1"></i>
+                            <span>18</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="instagram-item overflow-hidden rounded-xl shadow-md relative group">
+                <img src="./images/Luxe Matte Liquid Lipstick.webp" alt="Instagram Feed" class="w-full aspect-square object-cover transition-transform duration-300 group-hover:scale-110" loading="lazy">
+                <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
+                    <div class="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex space-x-4">
+                        <span class="flex items-center">
+                            <i class="far fa-heart mr-1"></i>
+                            <span>98</span>
+                        </span>
+                        <span class="flex items-center">
+                            <i class="far fa-comment mr-1"></i>
+                            <span>7</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="instagram-item overflow-hidden rounded-xl shadow-md relative group">
+                <img src="./images/Velvet Rose Body Butter.webp" alt="Instagram Feed" class="w-full aspect-square object-cover transition-transform duration-300 group-hover:scale-110" loading="lazy">
+                <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
+                    <div class="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex space-x-4">
+                        <span class="flex items-center">
+                            <i class="far fa-heart mr-1"></i>
+                            <span>156</span>
+                        </span>
+                        <span class="flex items-center">
+                            <i class="far fa-comment mr-1"></i>
+                            <span>23</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="instagram-item overflow-hidden rounded-xl shadow-md relative group">
+                <img src="./images/sarah header img.webp" alt="Instagram Feed" class="w-full aspect-square object-cover transition-transform duration-300 group-hover:scale-110" loading="lazy">
+                <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
+                    <div class="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex space-x-4">
+                        <span class="flex items-center">
+                            <i class="far fa-heart mr-1"></i>
+                            <span>142</span>
+                        </span>
+                        <span class="flex items-center">
+                            <i class="far fa-comment mr-1"></i>
+                            <span>11</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="text-center mt-10">
+            <a href="#" class="inline-flex items-center text-[#FF6F61] hover:text-[#ff5c4d] transition-colors">
+                <i class="fab fa-instagram text-xl mr-2"></i>
+                View More on Instagram
+            </a>
+        </div>
+    </div>
+</section>
+
+
 
    <!-- Updated footer with centered headings and working links -->
 <footer class="bg-black text-white py-16">
@@ -403,13 +1135,13 @@
                 <h3 class="text-2xl font-playfair font-bold mb-4">Sarah's Beauty</h3>
                 <p class="text-gray-400 mb-6">Elevate your beauty routine with our luxury products.</p>
                 <div class="flex space-x-4 justify-center">
-                    <a href="https://instagram.com/saidighaleb" class="text-gray-400 hover:text-[#FF6F61] transition-colors">
-                        <i class="fab fa-instagram text-2xl"></i>
+                    <a href="#" class="text-gray-400 hover:text-[#FF6F61] transition-colors">
+                      <i class="fab fa-instagram text-2xl"></i>
                     </a>
-                    <a href="https://wa.me/96181749400" class="text-gray-400 hover:text-[#FF6F61] transition-colors">
-                        <i class="fab fa-whatsapp text-2xl"></i>
+                    <a href="#" onclick="showDemoMessage(); return false;" class="text-gray-400 hover:text-[#FF6F61] transition-colors">
+                      <i class="fab fa-whatsapp text-2xl"></i>
                     </a>
-                </div>
+                  </div>
             </div>
             
             <!-- Quick Links -->
@@ -424,23 +1156,101 @@
             </div>
             
             <!-- Newsletter -->
-            <div class="text-center">
-                <h4 class="text-lg font-playfair font-semibold mb-4">Stay Connected</h4>
-                <p class="text-gray-400 mb-4">Subscribe to receive updates and special offers.</p>
-                <div class="flex justify-center">
-                    <input type="email" placeholder="Your email" class="px-4 py-2 bg-gray-900 border border-gray-700 rounded-l-lg focus:outline-none focus:border-[#FF6F61] text-white">
-                    <button class="px-6 py-2 bg-[#FF6F61] text-white rounded-r-lg hover:bg-[#ff5c4d] transition-colors">
-                        Subscribe
-                    </button>
-                </div>
-            </div>
-        </div>
-        
-        <div class="mt-12 pt-8 border-t border-gray-800 text-center text-gray-400">
-            <p>&copy; 2024 Sarah's Beauty Store. All rights reserved.</p>
-        </div>
+            <!-- Replace your footer newsletter section with this: -->
+<div class="text-center">
+    <h4 class="text-lg font-playfair font-semibold mb-4">Stay Connected</h4>
+    <p class="text-gray-400 mb-4">Subscribe to receive updates and special offers.</p>
+    <form id="newsletterForm" class="flex justify-center" novalidate>
+      <div class="relative">
+        <input 
+          type="email" 
+          id="subscriberEmail"
+          name="email" 
+          placeholder="Your email" 
+          class="px-4 py-2 bg-gray-900 border border-gray-700 rounded-l-lg focus:outline-none focus:border-[#FF6F61] text-white"
+          required
+        >
+        <span id="emailError" class="absolute -bottom-6 left-0 text-red-400 text-xs hidden">Please enter a valid email</span>
+      </div>
+      <button type="submit" class="px-6 py-2 bg-[#FF6F61] text-white rounded-r-lg hover:bg-[#ff5c4d] transition-colors">
+        Subscribe
+      </button>
+    </form>
+    <div id="subscribeSuccess" class="mt-2 text-green-400 text-sm hidden">
+      Thanks for subscribing!
+    </div>
+  </div>
     </div>
 </footer>
+
+<!-- Back to Top Button -->
+<button id="backToTop" class="fixed bottom-8 right-8 bg-[#FF6F61] text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg opacity-0 transition-opacity duration-300">
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+    </svg>
+</button>
+
+<!-- Cookie Consent Banner -->
+<div id="cookie-banner" class="fixed bottom-0 left-0 right-0 bg-white shadow-lg p-4 flex flex-col md:flex-row items-center justify-between z-50 transform translate-y-full transition-transform duration-300">
+    <p class="mb-4 md:mb-0 text-gray-700">We use cookies to enhance your experience. By continuing to visit this site you agree to our use of cookies.</p>
+    <div class="flex gap-2">
+        <button id="accept-cookies" class="bg-[#FF6F61] text-white px-4 py-2 rounded-lg hover:bg-[#ff5c4d] transition-colors">Accept</button>
+        <button id="decline-cookies" class="bg-gray-200 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-300 transition-colors">Decline</button>
+    </div>
+</div>
+
+<div id="quickViewModal" class="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 hidden">
+    <div class="bg-white rounded-xl p-6 max-w-4xl w-full mx-4 max-h-screen overflow-y-auto">
+      <div class="flex justify-between items-center mb-4">
+        <h3 id="quickViewTitle" class="text-2xl font-playfair font-bold">Glow Hydrating Face Serum</h3>
+        <button id="closeQuickView" class="text-gray-500 hover:text-gray-700">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div id="quickViewImage" class="rounded-xl overflow-hidden">
+          <img src="./images/Glow Serum.webp" alt="Glow Hydrating Face Serum" class="w-full rounded-lg">
+        </div>
+        
+        <div>
+          <div class="flex items-center mb-4">
+            <div class="flex text-yellow-400 text-lg mr-2">★★★★★</div>
+            <span class="text-gray-600 text-sm">(124 reviews)</span>
+          </div>
+          
+          <div id="quickViewPrice" class="text-2xl font-bold mb-4">$34.99</div>
+          
+          <div id="quickViewDescription" class="text-gray-600 mb-6">
+            A lightweight, fast-absorbing serum with hyaluronic acid and vitamin C that deeply hydrates skin while bringing a natural glow to your complexion. Perfect for daily use in your morning and evening skincare routine.
+          </div>
+          
+          <div id="quickViewFeatures" class="mb-6">
+            <h4 class="font-semibold mb-2">Key Features:</h4>
+            <ul class="space-y-2">
+              <li class="flex items-center"><span class="text-[#FF6F61] mr-2">•</span>Suitable for all skin types</li>
+              <li class="flex items-center"><span class="text-[#FF6F61] mr-2">•</span>Made with Hyaluronic Acid, Vitamin C, Aloe Vera</li>
+              <li class="flex items-center"><span class="text-[#FF6F61] mr-2">•</span>Lightweight and fast-absorbing formula</li>
+              <li class="flex items-center"><span class="text-[#FF6F61] mr-2">•</span>Hydrates and brightens skin</li>
+            </ul>
+          </div>
+          
+          <div class="flex flex-col space-y-3">
+            <button id="quickViewButton" onclick="showDemoMessage()" class="block bg-[#FF6F61] text-white text-center py-3 px-6 rounded-full hover:bg-[#ff5c4d] transition-colors">
+              <i class="fab fa-whatsapp mr-2"></i>
+              Order on WhatsApp
+            </button>
+            
+            <button id="viewDetailsBtn" class="block bg-transparent border-2 border-[#FF6F61] text-[#FF6F61] text-center py-3 px-6 rounded-full hover:bg-[#FFF0F0] transition-colors">
+              View Full Details
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
 <script src="main.js"></script>
 
